@@ -1,0 +1,37 @@
+id,title,year,category,field,authors
+2609.04199,Compile by Training: Turning Natural-Language Specifications into Local Neural Functions,2026,cs.CL,cs,Yuntian Deng; Pengyu Nie; Stuart Shieber
+2609.04198,"Clean Engineering, Unstable Measurement: A Preregistered Reliability Failure of Black-Box LLM Observers on Shared Endpoints",2026,cs.AI,cs,Haoyaun Zhu; Jie Zhang
+2609.04194,Legibility is Not Interpretability: Comparing Judged and Actual Importance in Chain-Of-Thought Reasoning,2026,cs.CL,cs,Kevin Du; Alexander Hoyle; Laura Ruis; Acyr Locatelli
+2609.04189,Robust PAC Learning of Concurrent Stochastic Games,2026,cs.LG,cs,Angel Y. He; David Parker
+2609.04168,Para-Pipe: Exploiting Hierarchical Operator Parallelism of ML Computational Graphs on SoCs,2026,cs.DC,cs,Yujie Zhang; Huiying Lan; Ehsan Aghapour; Zhiyuan Ning; Peng Zan; Weidong Shao; Anuj Pathania; Tulika Mitra
+2609.04165,"Parameterised graph theory for tensor networks: entanglement rerouting, structural simplification, and agnostic tomography",2026,quant-ph,quant-ph,Matthias C. Caro; Natalie McHugh; Sergii Strelchuk
+2609.04147,"A Low-Cost, Open Platform for End-to-End Autonomous Driving on a Miniature Ackermann Vehicle",2026,cs.LG,cs,Gustavo Claudio Karl Couto; Eric Aislan Antonelo; Gabriel George Zipperer
+2609.04134,Prospective Coding Improves Learning in Deep Continuous-Time Recurrent Networks,2026,cs.LG,cs,Shivang Rawat; Mirko Morello; Flaviano Morone; David J. Heeger
+2609.04113,Constant regret in general games via higher-order optimism,2026,cs.LG,cs,Omar Abbadi; Rida Laraki; Panayotis Mertikopoulos
+2609.04108,Sequential Beats Joint: On the Interplay between On-Policy Distillation and RLVR,2026,cs.CL,cs,Boyan Li; Bingsen Chen; Chenghao Yang; Ping Nie; Chen Zhao; Xi Ye
+2609.04105,Hardware-Aware FP4 FlashAttention-4,2026,cs.LG,cs,Robert Hu
+2609.04094,DRACO: Fine-Grained Credit Assignment with Dynamic Rubrics for Long-Horizon Agent Training,2026,cs.AI,cs,Shubham Gandhi; Saurabh Goyal; Kiran Kate; Yara Rizk
+2609.04090,Conditioning Degenerate Diffusion Models,2026,cs.LG,cs,Uğur Aydın; Tamer Başar
+2609.04066,Subspace Inference Enables Efficient Active Reward Learning from Preferences,2026,cs.LG,cs,Yutai Zhou; Erdem Bıyık
+2609.04046,The Head Complexity of Boolean Functions in Single-Layer Attention,2026,cs.CC,cs,Rajmohan Rajaraman; Ravi Sundaram; Amanuel Tesfaye
+2609.04033,From configuration spaces to graph complexes via FA-modules,2026,math.AT,math,Ayako Carter; Benjamin C. Ward
+2609.04028,Influence of Extruded Filament Shape on Buildability in 3D Concrete Printing: A Geometry-Informed Deep Learning-FEM Approach,2026,cs.CE,cs,Giacomo Rizzieri; Saif-Ur-Rehman; Jörg F. Unger; Annika Robens-Radermacher
+2609.04021,FLY-EVAL++: An Evidence-Driven Evaluation Protocol for Safety-Constrained Flight Prediction with Large Language Models,2026,cs.AI,cs,Yalun Wu; Junfeng Fang; Jiawei Wang; Haotian Liu; Qijun Yang; Minghan Yang; Hongcheng Guo; Zhoujun Li; Boyang Wang
+2609.04018,A location-invariant estimator of extremal quantile treatment effects for heavy-tailed distributions,2026,cs.LG,cs,Xin Yu; Shuwei Huang; Jicheng Liu; Jielin Tang; Bolin Wang; Yunxiao Zhang; Tian Zhao
+2609.04013,LLM4CKD: Large Language Models for Early Stage Chronic Kidney Disease Screening,2026,cs.AI,cs,Muhammad Ashad Kabir; Sirajam Munira
+2609.04011,Differentiable Hybrid Modelling for Learning and Optimising Chemical Transport Processes from Experimental Data,2026,cs.CE,cs,Arthur Jessop; Mohammed Alsubeihi; Ben Moseley; Ashwin Kumar Rajagopalan
+2609.04010,Unlocking Lossless Speedups in LLMs via Discrete Diffusion,2026,cs.LG,cs,Subham Sekhar Sahoo; Lingjie Chen; Khiem Pham; Jonathan Geuter; Chaitanya Dwivedi; Varad Pimpalkhute; Yash Akhauri; Alexander Moreno; Mikhail Yurochkin; Zhenting Wang; Mostafa Elhoushi; Nolan Dey; Shane Bergsma; Joel Hestness; John Thickstun; Eric Xing; Zhengzhong Liu
+2609.04007,RobustSeiz: An Open-Source Framework for Benchmarking the Robustness of EEG Seizure Detection Models,2026,cs.LG,cs,Mohammad Mohammadi; Alireza Zarei
+2609.03981,Sharpening the Ensemble: An SSIM-Aligned Residual Refiner for Brain-MRI Inpainting Post-Processing,2026,cs.CV,cs,Kubilay Kağan Kömürcü; İlkay Öksüz
+2609.03977,Cooperative Multi-Task Semantic Communication for Joint Classification and Regression Tasks,2026,eess.SP,eess,Ahmad Halimi Razlighi; Mohammad Siddiqur Rahman; Maximilian H. V. Tillmann; Edgar Beck; Armin Dekorsy
+2609.03972,OSR: Output Space Redistribution for Adaptive Label Removal in Classification Models,2026,cs.LG,cs,Minyi Peng; Darian Gunamardi; Ivan Tjuawinata; Yongsen Zheng; Kwok-Yan Lam
+2609.03963,On the surjectivity conjectures of Dupont and Monod,2026,math.GR,math,Alexander Kupers; Daniil Rudenko; Ismael Sierra
+2609.03956,RARF: Region-Aware Rectified Flows for 3D Brain MRI Inpainting,2026,cs.CV,cs,Tomas Guija-Valiente; Blanca Rodriguez-Gonzalez; Norberto Malpica; Angel Torrado-Carvajal
+2609.03955,Two-Stage Reinforcement Learning for Sound and Adversarial Test Generation in Code LLMs,2026,cs.CL,cs,Jiacheng Xu; Wentao Zhang; Zhiyi Lyu; Fuxiang Zhang; Chaojie Wang; Yang Liu; Bo An
+2609.03949,VestigeKV: The NoPE-MLA KV Cache Carries Its Own Eviction Signal in a Vestigial Branch,2026,cs.LG,cs,WenJie Fan
+2609.03941,Headroom-Drift Replay: A Primitive for Principled Replay Control in GRPO,2026,cs.LG,cs,Hyun Bin Park; Du-Seong Chang
+2609.03937,RATL: Learning from Retrieved Residuals for Robust Multivariate Time-Series Forecasting,2026,cs.LG,cs,Yuchen He; Yueyang Cang; Zhiyuan Ning; Ningyu Wang; Li Shi
+2609.03932,Khovanov monodromy groups via motions,2026,math.GT,math,Gabriel Corrigan; Livio Ferretti; Isacco Nonino; Susanna Terron
+2609.03931,Sparse auto-regressive modeling for scene generation from multi-view images,2026,cs.CV,cs,Thomas Lucas; Maxime Pietrantoni; Philippe Weinzaepfel; Wonjune Cho; Bardienus Pieter Duisterhof; Vincent Leroy; Jerome Revaud
+2609.03901,Comparing Retrieval Methods for Academic Advisor Discovery: A Six-Method Study of 768 CS Faculty Profiles Across 9 US Universities,2026,cs.IR,cs,Biraj Subedi
+2609.03900,Beyond Endpoint Scores: Time- and Capacity-Conditioned Evaluation of Continual Knowledge Updating,2026,cs.LG,cs,Heejin Choi

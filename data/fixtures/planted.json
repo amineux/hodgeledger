@@ -1,0 +1,68 @@
+{
+  "cycle_papers": [
+    "synth-1601",
+    "synth-1602",
+    "synth-1603",
+    "synth-1604",
+    "synth-1605",
+    "synth-1606",
+    "synth-1607",
+    "synth-1608",
+    "synth-1609",
+    "synth-1610",
+    "synth-1611",
+    "synth-1612"
+  ],
+  "cycle_edges": [
+    [
+      "synth-1601",
+      "synth-1602"
+    ],
+    [
+      "synth-1602",
+      "synth-1603"
+    ],
+    [
+      "synth-1603",
+      "synth-1604"
+    ],
+    [
+      "synth-1604",
+      "synth-1605"
+    ],
+    [
+      "synth-1605",
+      "synth-1606"
+    ],
+    [
+      "synth-1606",
+      "synth-1607"
+    ],
+    [
+      "synth-1607",
+      "synth-1608"
+    ],
+    [
+      "synth-1608",
+      "synth-1609"
+    ],
+    [
+      "synth-1609",
+      "synth-1610"
+    ],
+    [
+      "synth-1610",
+      "synth-1611"
+    ],
+    [
+      "synth-1611",
+      "synth-1612"
+    ],
+    [
+      "synth-1612",
+      "synth-1601"
+    ]
+  ],
+  "rule": "clique-complex of stacked chordal fields + spanning path + unfilled C12 on a stem",
+  "n_papers": 1612
+}

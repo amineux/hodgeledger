@@ -1,0 +1,89 @@
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  build-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install toolchain
+        run: |
+          sudo apt-get update
+          sudo DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
+            build-essential cmake ninja-build python3 g++
+          sudo DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends gnucobol \
+            || sudo DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends gnucobol3 \
+            || sudo DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends open-cobol \
+            || echo "cobc package unavailable; Python verifier is the fallback"
+
+      - name: Configure and build
+        run: |
+          cmake -B build -G Ninja -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_COMPILER=g++
+          cmake --build build
+
+      - name: Test
+        run: ctest --test-dir build --output-on-failure
+
+      - name: Pipeline on tiny fixture
+        run: |
+          ./build/hodgeledger --data data/fixtures/tiny --out out-tiny --k 4 --bridges 8 --loo-candidates 64
+          python3 scripts/verify_ledger.py --journal out-tiny/ledger/journal.csv \
+            --dat out-tiny/ledger/journal.dat --trial out-tiny/ledger/trial_balance.csv
+          test -s out-tiny/embedding.json
+          test -s out-tiny/harmonic.json
+          test -s out-tiny/bridges.json
+          test -s out-tiny/timeline.json
+          test -s out-tiny/ledger.json
+          python3 - << 'PY'
+          import json
+          H = json.load(open("out-tiny/harmonic.json"))
+          assert H["betti1"] >= 1
+          assert H["lambda_min"] < 1e-4
+          loop = set(H["cycles"][0]["loop"]) if H["cycles"][0]["loop"] else set()
+          planted = {"synth-0009","synth-0010","synth-0011","synth-0012"}
+          edges = {(min(e["u"], e["v"]), max(e["u"], e["v"])) for e in H["cycles"][0]["edges"]}
+          need = {("synth-0009","synth-0010"),("synth-0010","synth-0011"),
+                  ("synth-0011","synth-0012"),("synth-0009","synth-0012")}
+          assert len(need & edges) == 4, (need, edges)
+          B = json.load(open("out-tiny/bridges.json"))
+          assert B["method"] == "leave-one-edge-out"
+          assert B["bridges"][0]["delta_lambda"] is not None
+          tl = json.load(open("out-tiny/timeline.json"))
+          assert tl["slices"]
+          emb = json.load(open("out-tiny/embedding.json"))
+          assert "z" in emb["nodes"][0]
+          print("tiny Hodge contract ok", "λmin", H["lambda_min"], "top LOO", B["bridges"][0]["id"])
+          PY
+
+      - name: Pipeline on arXiv slice (offline snapshot)
+        run: |
+          python3 scripts/fetch_arxiv_slice.py --out data/fixtures/arxiv-slice --offline
+          ./build/hodgeledger --data data/fixtures/arxiv-slice --out out-arxiv --k 4 --bridges 8 --no-loo
+          python3 scripts/verify_ledger.py --journal out-arxiv/ledger/journal.csv
+          test -s out-arxiv/timeline.json
+          python3 - << 'PY'
+          import json, csv
+          ids = [r["id"] for r in csv.DictReader(open("data/fixtures/arxiv-slice/papers.csv"))]
+          assert ids, "arxiv slice empty"
+          assert not any(i.startswith("synth-") for i in ids)
+          print("arxiv-slice ok", "n", len(ids))
+          PY
+
+      - name: Compile COBOL (if cobc is present)
+        run: |
+          if command -v cobc >/dev/null 2>&1; then
+            cmake --build build --target cobol-ledger
+            test -x build/cobol/post-flow
+            test -x build/cobol/trial-balance
+            test -x build/cobol/report
+            ( cd out-tiny/ledger && ../../build/cobol/post-flow && ../../build/cobol/trial-balance && ../../build/cobol/report )
+            python3 scripts/verify_ledger.py --journal out-tiny/ledger/journal.csv \
+              --dat out-tiny/ledger/journal.dat --trial out-tiny/ledger/trial_balance.csv
+          else
+            echo "cobc not on PATH — accepted; scripts/verify_ledger.py already ran"
+          fi

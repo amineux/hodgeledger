@@ -1,0 +1,13 @@
+id,title,year,category,field,authors
+synth-0001,Tiny cs paper 1,2016,cs.LG,cs,Author 1
+synth-0002,Tiny cs paper 2,2016,cs.LG,cs,Author 2
+synth-0003,Tiny cs paper 3,2016,cs.LG,cs,Author 3
+synth-0004,Tiny cs paper 4,2017,cs.LG,cs,Author 4
+synth-0005,Tiny qbio paper 5,2016,q-bio.NC,qbio,Author 5
+synth-0006,Tiny qbio paper 6,2016,q-bio.NC,qbio,Author 6
+synth-0007,Tiny qbio paper 7,2016,q-bio.NC,qbio,Author 7
+synth-0008,Tiny qbio paper 8,2017,q-bio.NC,qbio,Author 8
+synth-0009,Tiny cs paper 9,2018,cs.LG,cs,Author 9
+synth-0010,Tiny qbio paper 10,2018,q-bio.NC,qbio,Author 10
+synth-0011,Tiny cs paper 11,2018,cs.LG,cs,Author 11
+synth-0012,Tiny qbio paper 12,2019,q-bio.NC,qbio,Author 12
