@@ -66,7 +66,12 @@ Documents the synthetic harmonic 1-cycle for unit tests: `cycle_papers`,
 
 `out/ledger/flows.csv` — `dim,debit,credit,year,amount_cents,memo` (COBOL `POST-FLOW` input).
 
-`out/ledger/journal.dat` — LINE SEQUENTIAL, **96 bytes + newline**:
+`out/ledger/journal.dat` — LINE SEQUENTIAL, **96 bytes + newline**.
+GnuCOBOL LINE SEQUENTIAL strips trailing spaces unless `COB_LS_FIXED` is
+true; `POST-FLOW` sets that environment at start so the DAT file stays 96
+bytes (matching C++ `write_journal_dat()`).
+
+Layout:
 
 ```
 01 JOURNAL-REC.

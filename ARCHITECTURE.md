@@ -61,7 +61,8 @@ link it plus GoogleTest (FetchContent, v1.14.0).
 GnuCOBOL free-format programs, compiled with `cobc -free -I cobol/copy`.
 `IDENTIFICATION DIVISION` contains only `PROGRAM-ID` — prose comments there
 break `cobc`. COPY books `JOURNAL.cpy` and `ACCOUNT.cpy` are the contract
-with C++ `write_journal_dat()`. Record length is 96 bytes.
+GnuCOBOL LINE SEQUENTIAL trims trailing spaces unless `COB_LS_FIXED` is set;
+`POST-FLOW` does that so the 96-byte contract matches C++.
 
 `TRIAL-BALANCE` holds up to 8000 in-memory accounts (two charts × papers).
 The Python verifier has no such ceiling and is what CI runs when `cobc` is

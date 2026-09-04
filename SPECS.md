@@ -128,7 +128,9 @@ positive amounts, \(\sum\mathrm{DR}=\sum\mathrm{CR}\) globally and per chart.
 Re-posting is deterministic.
 
 COBOL programs `POST-FLOW`, `TRIAL-BALANCE`, `REPORT` are a second
-implementation. If `cobc` is missing, `scripts/verify_ledger.py` is the
+implementation. `POST-FLOW` sets `COB_LS_FIXED` so GnuCOBOL LINE SEQUENTIAL
+keeps the canonical 96-byte `journal.dat` records (otherwise trailing memo
+spaces are stripped). If `cobc` is missing, `scripts/verify_ledger.py` is the
 supported check.
 
 ## Atlas

@@ -81,7 +81,14 @@ jobs:
             test -x build/cobol/post-flow
             test -x build/cobol/trial-balance
             test -x build/cobol/report
+            export COB_LS_FIXED=Y
             ( cd out-tiny/ledger && ../../build/cobol/post-flow && ../../build/cobol/trial-balance && ../../build/cobol/report )
+            python3 - << 'PY'
+          from pathlib import Path
+          line = Path("out-tiny/ledger/journal.dat").read_text().splitlines()[0]
+          assert len(line) == 96, f"COBOL journal.dat width {len(line)} != 96"
+          print("cobol dat width 96 ok")
+          PY
             python3 scripts/verify_ledger.py --journal out-tiny/ledger/journal.csv \
               --dat out-tiny/ledger/journal.dat --trial out-tiny/ledger/trial_balance.csv
           else
