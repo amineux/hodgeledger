@@ -190,12 +190,20 @@ input[type="range"] { width: 100%; accent-color: var(--cycle); }
 .legend span { display: flex; align-items: center; gap: 6px; }
 .sw { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
 
-.sheet {
-  position: fixed; inset: 0; background: #07060fcc;
-  display: grid; place-items: center; z-index: 20;
+/* Visibility is class-driven. Default MUST stay none; UA [hidden] loses to display:grid. */
+.sheet,
+#sheet {
+  position: fixed;
+  inset: 0;
+  background: #07060fcc;
+  z-index: 20;
+  display: none !important;
 }
-/* Author display:grid beats UA [hidden]{display:none}; keep the overlay off until ?. */
-.sheet[hidden] { display: none; }
+.sheet.is-open,
+#sheet.is-open {
+  display: grid !important;
+  place-items: center;
+}
 .sheet-card {
   position: relative;
   background: #120f1c; border: 1px solid var(--cycle);
@@ -226,6 +234,12 @@ input[type="range"] { width: 100%; accent-color: var(--cycle); }
 .sheet-card h3 { font-family: var(--serif); margin: 0 0 10px; padding-right: 28px; }
 .sheet-card ul { padding: 0; list-style: none; }
 .sheet-card li { margin: 6px 0; font-size: 13px; }
+.sheet-dismiss {
+  margin-top: 14px;
+  width: 100%;
+  padding: 8px 12px;
+  font-size: 13px;
+}
 kbd {
   font: 11px var(--mono);
   border: 1px solid #3b3450;
