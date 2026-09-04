@@ -7,7 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/atlas.css" />
+  <link rel="stylesheet" href="css/atlas.css?v=2" />
 </head>
 <body>
   <header class="top">
@@ -87,9 +87,9 @@
     </p>
   </footer>
 
-  <div id="sheet" class="sheet" hidden>
-    <div class="sheet-card">
-      <button type="button" id="sheet-close" class="sheet-close" aria-label="Close cheatsheet">✕</button>
+  <div id="sheet" class="sheet" hidden onclick="document.getElementById('sheet').classList.remove('is-open');">
+    <div class="sheet-card" onclick="event.stopPropagation();">
+      <button type="button" id="sheet-close" class="sheet-close" aria-label="Close cheatsheet" onclick="document.getElementById('sheet').classList.remove('is-open');">✕</button>
       <h3>cheatsheet</h3>
       <ul>
         <li><kbd>/</kbd> focus search</li>
@@ -101,9 +101,10 @@
         <li><kbd>esc</kbd> clear / close</li>
       </ul>
       <p>Drag to orbit. Shift-drag or middle-drag to pan. Wheel zooms. Year slider dims papers that did not exist yet. Loops are oriented 1-flows.</p>
+      <button type="button" id="sheet-dismiss" class="sheet-dismiss" onclick="document.getElementById('sheet').classList.remove('is-open');">Close</button>
     </div>
   </div>
 
-  <script src="js/atlas.js"></script>
+  <script src="js/atlas.js?v=2"></script>
 </body>
 </html>

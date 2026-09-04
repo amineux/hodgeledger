@@ -43,6 +43,80 @@
   };
 
   const $ = (id) => document.getElementById(id);
+
+  function closeSheet() {
+    const sheet = $("sheet");
+    if (!sheet) return;
+    sheet.classList.remove("is-open");
+    sheet.hidden = true;
+    sheet.style.display = "none";
+  }
+
+  function openSheet() {
+    const sheet = $("sheet");
+    if (!sheet) return;
+    sheet.classList.add("is-open");
+    sheet.hidden = false;
+    sheet.style.display = "";
+  }
+
+  function toggleSheet() {
+    const sheet = $("sheet");
+    if (!sheet) return;
+    if (sheet.classList.contains("is-open")) closeSheet();
+    else openSheet();
+  }
+
+  const sheetEl = $("sheet");
+  if (sheetEl) {
+    sheetEl.addEventListener(
+      "click",
+      (e) => {
+        if (e.target === sheetEl || e.target.id === "sheet") closeSheet();
+      },
+      { capture: true }
+    );
+  }
+  const sheetClose = $("sheet-close");
+  if (sheetClose) {
+    sheetClose.addEventListener(
+      "click",
+      (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        closeSheet();
+      },
+      { capture: true }
+    );
+  }
+  const sheetDismiss = $("sheet-dismiss");
+  if (sheetDismiss) {
+    sheetDismiss.addEventListener(
+      "click",
+      (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        closeSheet();
+      },
+      { capture: true }
+    );
+  }
+  document.addEventListener(
+    "keydown",
+    (e) => {
+      if (e.key === "Escape") {
+        closeSheet();
+        return;
+      }
+      const typing = document.activeElement === $("search");
+      if (e.key === "?" && !typing) {
+        e.preventDefault();
+        toggleSheet();
+      }
+    },
+    { capture: true }
+  );
+
   const canvas = $("atlas");
   const ctx = canvas.getContext("2d", { alpha: false });
 
@@ -666,32 +740,36 @@
     { passive: false }
   );
 
-  $("btn-2d").addEventListener("click", () => {
-    state.dim = 2;
-    $("btn-2d").classList.add("active");
-    $("btn-3d").classList.remove("active");
-  });
-  $("btn-3d").addEventListener("click", () => {
-    state.dim = 3;
-    state.auto = true;
-    $("btn-3d").classList.add("active");
-    $("btn-2d").classList.remove("active");
-  });
-  $("btn-cycles").addEventListener("click", (e) => {
-    state.onlyCycles = !state.onlyCycles;
-    e.currentTarget.classList.toggle("active", state.onlyCycles);
-  });
-  $("btn-faces").addEventListener("click", (e) => {
-    state.faces = !state.faces;
-    e.currentTarget.classList.toggle("active", state.faces);
-  });
-  $("search").addEventListener("input", (e) => {
-    state.query = e.target.value.trim().toLowerCase();
-    if (state.query) {
-      const hitN = (state.embedding?.nodes || []).find((n) => qmatch(n));
-      if (hitN) select(hitN.id);
-    }
-  });
+  try {
+    $("btn-2d").addEventListener("click", () => {
+      state.dim = 2;
+      $("btn-2d").classList.add("active");
+      $("btn-3d").classList.remove("active");
+    });
+    $("btn-3d").addEventListener("click", () => {
+      state.dim = 3;
+      state.auto = true;
+      $("btn-3d").classList.add("active");
+      $("btn-2d").classList.remove("active");
+    });
+    $("btn-cycles").addEventListener("click", (e) => {
+      state.onlyCycles = !state.onlyCycles;
+      e.currentTarget.classList.toggle("active", state.onlyCycles);
+    });
+    $("btn-faces").addEventListener("click", (e) => {
+      state.faces = !state.faces;
+      e.currentTarget.classList.toggle("active", state.faces);
+    });
+    $("search").addEventListener("input", (e) => {
+      state.query = e.target.value.trim().toLowerCase();
+      if (state.query) {
+        const hitN = (state.embedding?.nodes || []).find((n) => qmatch(n));
+        if (hitN) select(hitN.id);
+      }
+    });
+  } catch (err) {
+    console.warn("atlas hud wiring failed", err);
+  }
 
   function cycleHarmonic(dir) {
     const list = state.harmonic?.cycles || [];
@@ -700,48 +778,34 @@
     selectCycle(state.selectedCycle);
   }
 
-  function closeSheet() {
-    $("sheet").hidden = true;
-  }
-  function toggleSheet() {
-    $("sheet").hidden = !$("sheet").hidden;
-  }
-
-  document.addEventListener("keydown", (e) => {
-    const typing = document.activeElement === $("search");
-    if (e.key === "/" && !typing) {
-      e.preventDefault();
-      $("search").focus();
-      $("search").select();
-      return;
-    }
-    if (e.key === "Escape") {
-      closeSheet();
-      if (typing) {
-        $("search").blur();
-        $("search").value = "";
-        state.query = "";
+  try {
+    document.addEventListener("keydown", (e) => {
+      const typing = document.activeElement === $("search");
+      if (e.key === "/" && !typing) {
+        e.preventDefault();
+        $("search").focus();
+        $("search").select();
+        return;
       }
-      return;
-    }
-    if (e.key === "?" && !typing) {
-      e.preventDefault();
-      toggleSheet();
-      return;
-    }
-    if (typing) return;
-    if (e.key === "[") cycleHarmonic(-1);
-    if (e.key === "]") cycleHarmonic(1);
-    if (e.key === "2") $("btn-2d").click();
-    if (e.key === "3") $("btn-3d").click();
-    if (e.key === "c") $("btn-cycles").click();
-    if (e.key === "f") $("btn-faces").click();
-  });
-
-  $("sheet-close").addEventListener("click", closeSheet);
-  $("sheet").addEventListener("click", (e) => {
-    if (e.target.id === "sheet") closeSheet();
-  });
+      if (e.key === "Escape") {
+        if (typing) {
+          $("search").blur();
+          $("search").value = "";
+          state.query = "";
+        }
+        return;
+      }
+      if (typing) return;
+      if (e.key === "[") cycleHarmonic(-1);
+      if (e.key === "]") cycleHarmonic(1);
+      if (e.key === "2") $("btn-2d").click();
+      if (e.key === "3") $("btn-3d").click();
+      if (e.key === "c") $("btn-cycles").click();
+      if (e.key === "f") $("btn-faces").click();
+    });
+  } catch (err) {
+    console.warn("atlas shortcut wiring failed", err);
+  }
 
   window.addEventListener("resize", resize);
   load().catch((err) => {
