@@ -194,11 +194,36 @@ input[type="range"] { width: 100%; accent-color: var(--cycle); }
   position: fixed; inset: 0; background: #07060fcc;
   display: grid; place-items: center; z-index: 20;
 }
+/* Author display:grid beats UA [hidden]{display:none}; keep the overlay off until ?. */
+.sheet[hidden] { display: none; }
 .sheet-card {
+  position: relative;
   background: #120f1c; border: 1px solid var(--cycle);
-  padding: 22px 26px; max-width: 420px;
+  padding: 22px 40px 22px 26px; max-width: 420px;
 }
-.sheet-card h3 { font-family: var(--serif); margin: 0 0 10px; }
+.sheet-close {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 36px;
+  height: 36px;
+  min-width: 36px;
+  min-height: 36px;
+  padding: 0;
+  display: grid;
+  place-items: center;
+  font-size: 20px;
+  line-height: 1;
+  color: #f4efe6;
+  background: #1c1730;
+  border-color: #6a6280;
+}
+.sheet-close:hover,
+.sheet-close:focus-visible {
+  color: #ffffff;
+  border-color: var(--cycle);
+}
+.sheet-card h3 { font-family: var(--serif); margin: 0 0 10px; padding-right: 28px; }
 .sheet-card ul { padding: 0; list-style: none; }
 .sheet-card li { margin: 6px 0; font-size: 13px; }
 kbd {

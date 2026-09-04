@@ -700,6 +700,13 @@
     selectCycle(state.selectedCycle);
   }
 
+  function closeSheet() {
+    $("sheet").hidden = true;
+  }
+  function toggleSheet() {
+    $("sheet").hidden = !$("sheet").hidden;
+  }
+
   document.addEventListener("keydown", (e) => {
     const typing = document.activeElement === $("search");
     if (e.key === "/" && !typing) {
@@ -709,7 +716,7 @@
       return;
     }
     if (e.key === "Escape") {
-      $("sheet").hidden = true;
+      closeSheet();
       if (typing) {
         $("search").blur();
         $("search").value = "";
@@ -719,7 +726,7 @@
     }
     if (e.key === "?" && !typing) {
       e.preventDefault();
-      $("sheet").hidden = !$("sheet").hidden;
+      toggleSheet();
       return;
     }
     if (typing) return;
@@ -731,8 +738,9 @@
     if (e.key === "f") $("btn-faces").click();
   });
 
+  $("sheet-close").addEventListener("click", closeSheet);
   $("sheet").addEventListener("click", (e) => {
-    if (e.target.id === "sheet") $("sheet").hidden = true;
+    if (e.target.id === "sheet") closeSheet();
   });
 
   window.addEventListener("resize", resize);
