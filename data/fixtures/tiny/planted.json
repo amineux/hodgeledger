@@ -1,0 +1,27 @@
+{
+  "cycle_papers": [
+    "synth-0009",
+    "synth-0010",
+    "synth-0011",
+    "synth-0012"
+  ],
+  "cycle_edges": [
+    [
+      "synth-0009",
+      "synth-0010"
+    ],
+    [
+      "synth-0010",
+      "synth-0011"
+    ],
+    [
+      "synth-0011",
+      "synth-0012"
+    ],
+    [
+      "synth-0012",
+      "synth-0009"
+    ]
+  ],
+  "rule": "clique-complex; planted C4 hangs off a single stem and is unfilled"
+}

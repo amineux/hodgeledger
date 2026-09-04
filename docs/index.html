@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>HodgeLedger — simplicial citation atlas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/atlas.css" />
+</head>
+<body>
+  <header class="top">
+    <div class="brand">
+      <div class="mark" aria-hidden="true"></div>
+      <div>
+        <h1>Hodge Ledger</h1>
+        <p class="tag">Simplicial citation complex. Hodge L0 / L1. Harmonic cycles as circular intellectual debt.</p>
+      </div>
+    </div>
+    <dl class="stats" id="stats">
+      <div><dt>n</dt><dd id="stat-n">—</dd></div>
+      <div><dt>m</dt><dd id="stat-m">—</dd></div>
+      <div><dt>Δ</dt><dd id="stat-t">—</dd></div>
+      <div><dt>β₀</dt><dd id="stat-b0">—</dd></div>
+      <div><dt>β₁</dt><dd id="stat-b1">—</dd></div>
+      <div><dt>λ₂ L₀</dt><dd id="stat-l2">—</dd></div>
+      <div><dt>λmin L₁</dt><dd id="stat-l1">—</dd></div>
+      <div><dt>year</dt><dd id="stat-year">—</dd></div>
+    </dl>
+  </header>
+
+  <main class="stage">
+    <canvas id="atlas"></canvas>
+    <div id="hover" hidden></div>
+
+    <div class="hud">
+      <div class="toggles">
+        <button type="button" id="btn-3d" class="active">3D orbit</button>
+        <button type="button" id="btn-2d">2D Hodge</button>
+        <button type="button" id="btn-cycles">cycles</button>
+        <button type="button" id="btn-faces">faces</button>
+      </div>
+      <label class="search">
+        <span>/</span>
+        <input id="search" type="search" placeholder="id or title" autocomplete="off" />
+      </label>
+    </div>
+
+    <div class="timebox" id="timebox" hidden>
+      <div class="time-lab">
+        <span>timeline</span>
+        <strong id="year-label">—</strong>
+        <em id="year-cycle"></em>
+      </div>
+      <input id="year" type="range" min="0" max="0" value="0" />
+    </div>
+  </main>
+
+  <aside class="rail">
+    <section class="panel ledger">
+      <h2>Ledger</h2>
+      <pre id="detail" class="term"></pre>
+      <div id="spark" class="spark" hidden>
+        <div class="row"><span>0·DR</span><i id="bar-dr0"></i><b id="lab-dr0">0</b></div>
+        <div class="row"><span>0·CR</span><i id="bar-cr0"></i><b id="lab-cr0">0</b></div>
+        <div class="row"><span>1·DR</span><i id="bar-dr1"></i><b id="lab-dr1">0</b></div>
+        <div class="row"><span>1·CR</span><i id="bar-cr1"></i><b id="lab-cr1">0</b></div>
+        <p id="spark-peer"></p>
+      </div>
+    </section>
+    <section class="panel">
+      <h2>Harmonic 1-cycles</h2>
+      <p class="bridge-meta" id="cycle-meta">
+        Ranked ker L₁ modes. Glowing loops are cycles that are not triangle boundaries.
+      </p>
+      <ul class="cycle-list" id="cycles"></ul>
+    </section>
+  </aside>
+
+  <footer class="foot">
+    <div id="legend" class="legend"></div>
+    <p>
+      clique complex · planted unfilled cycle · Fiedler baseline on the 0-skeleton
+      · <a href="https://github.com/amineux/hodgeledger">source</a>
+      · <a href="https://amineux.github.io/hodgeledger/">amineux.github.io/hodgeledger</a>
+    </p>
+  </footer>
+
+  <div id="sheet" class="sheet" hidden>
+    <div class="sheet-card">
+      <h3>cheatsheet</h3>
+      <ul>
+        <li><kbd>/</kbd> focus search</li>
+        <li><kbd>[</kbd> <kbd>]</kbd> cycle harmonic loops</li>
+        <li><kbd>2</kbd> / <kbd>3</kbd> Hodge plane / 3D orbit</li>
+        <li><kbd>c</kbd> cycles-only</li>
+        <li><kbd>f</kbd> triangle faces</li>
+        <li><kbd>?</kbd> toggle this sheet</li>
+        <li><kbd>esc</kbd> clear / close</li>
+      </ul>
+      <p>Drag to orbit. Shift-drag or middle-drag to pan. Wheel zooms. Year slider dims papers that did not exist yet. Loops are oriented 1-flows.</p>
+    </div>
+  </div>
+
+  <script src="js/atlas.js"></script>
+</body>
+</html>

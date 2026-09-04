@@ -1,0 +1,9 @@
+id,name,group
+cs.LG,learning,cs
+stat.ML,statistics,stat
+math.AT,topology,math
+physics.comp-ph,physics,physics
+q-bio.NC,biology,qbio
+eess.SP,signals,eess
+econ.TH,economics,econ
+q-fin.ST,finance,qfin

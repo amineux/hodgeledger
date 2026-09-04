@@ -1,0 +1,115 @@
+{
+  "version": 1,
+  "slices": [
+    {
+      "year": 2015,
+      "n": 160,
+      "m": 439,
+      "triangles": 416,
+      "components": 1,
+      "lambda2": 0.00017091614527791141,
+      "lambda_min_l1": 0.0074651077118976783,
+      "betti1": 0,
+      "top_cycle_hint": "synth-0601→synth-0801"
+    },
+    {
+      "year": 2016,
+      "n": 320,
+      "m": 919,
+      "triangles": 896,
+      "components": 1,
+      "lambda2": 0.00039052045818722931,
+      "lambda_min_l1": 0.0037507129105137978,
+      "betti1": 0,
+      "top_cycle_hint": "synth-0601→synth-0801"
+    },
+    {
+      "year": 2017,
+      "n": 480,
+      "m": 1399,
+      "triangles": 1376,
+      "components": 1,
+      "lambda2": 0.0025038816291010199,
+      "lambda_min_l1": 0.0025038816290856164,
+      "betti1": 0,
+      "top_cycle_hint": "synth-0601→synth-0801"
+    },
+    {
+      "year": 2018,
+      "n": 640,
+      "m": 1879,
+      "triangles": 1856,
+      "components": 1,
+      "lambda2": 0.0018801382510242317,
+      "lambda_min_l1": 0.0018801382510258773,
+      "betti1": 0,
+      "top_cycle_hint": "synth-0601→synth-0801"
+    },
+    {
+      "year": 2019,
+      "n": 800,
+      "m": 2359,
+      "triangles": 2336,
+      "components": 1,
+      "lambda2": 0.0015054692953959219,
+      "lambda_min_l1": 0.0015054692953722828,
+      "betti1": 0,
+      "top_cycle_hint": "synth-0601→synth-0801"
+    },
+    {
+      "year": 2020,
+      "n": 960,
+      "m": 2839,
+      "triangles": 2816,
+      "components": 1,
+      "lambda2": 0.001256267049842272,
+      "lambda_min_l1": 0.0012562670481325361,
+      "betti1": 0,
+      "top_cycle_hint": "synth-0601→synth-0801"
+    },
+    {
+      "year": 2021,
+      "n": 1126,
+      "m": 3320,
+      "triangles": 3296,
+      "components": 6,
+      "lambda2": 0.0010765573249506154,
+      "lambda_min_l1": 0.0010759024288924917,
+      "betti1": 0,
+      "top_cycle_hint": "synth-0601→synth-0801"
+    },
+    {
+      "year": 2022,
+      "n": 1292,
+      "m": 3812,
+      "triangles": 3776,
+      "components": 1,
+      "lambda2": 2.6345561818032963e-06,
+      "lambda_min_l1": 3.8663932493546266e-05,
+      "betti1": 1,
+      "top_cycle_hint": "synth-1601→synth-1602"
+    },
+    {
+      "year": 2023,
+      "n": 1452,
+      "m": 4292,
+      "triangles": 4256,
+      "components": 1,
+      "lambda2": 4.3631961716132406e-06,
+      "lambda_min_l1": 0.00010794456909098959,
+      "betti1": 0,
+      "top_cycle_hint": "synth-1603→synth-1604"
+    },
+    {
+      "year": 2024,
+      "n": 1612,
+      "m": 4772,
+      "triangles": 4736,
+      "components": 1,
+      "lambda2": 0.0002180313393928993,
+      "lambda_min_l1": 8.1352457337654255e-05,
+      "betti1": 1,
+      "top_cycle_hint": "synth-1601→synth-1602"
+    }
+  ]
+}

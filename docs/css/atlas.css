@@ -1,0 +1,218 @@
+:root {
+  --bg: #07060f;
+  --bg2: #100e1c;
+  --ink: #e8e0d4;
+  --muted: #8b8496;
+  --line: #2a2438;
+  --cs: #6ea8fe;
+  --stat: #e6b35a;
+  --math: #d48cff;
+  --physics: #ff8b6b;
+  --qbio: #7dffb3;
+  --eess: #7ee0e8;
+  --econ: #f0a3c2;
+  --qfin: #c9d46a;
+  --cycle: #7ef0ff;
+  --term: #9dffb0;
+  --danger: #ff7a90;
+  --mono: "IBM Plex Mono", ui-monospace, monospace;
+  --serif: "Fraunces", "Times New Roman", serif;
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; height: 100%; background: var(--bg); color: var(--ink); }
+body {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  grid-template-columns: 1fr 340px;
+  grid-template-areas:
+    "top top"
+    "stage rail"
+    "foot foot";
+  font-family: var(--mono);
+  min-height: 100vh;
+}
+
+.top {
+  grid-area: top;
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  align-items: center;
+  padding: 14px 22px 10px;
+  border-bottom: 1px solid var(--line);
+  background: linear-gradient(180deg, #141026, var(--bg));
+}
+.brand { display: flex; gap: 14px; align-items: center; }
+.mark {
+  width: 36px; height: 36px; border-radius: 50%;
+  background:
+    conic-gradient(from 210deg, var(--cycle), var(--math), var(--qbio), var(--cycle));
+  box-shadow: 0 0 18px #7ef0ff66;
+  position: relative;
+}
+.mark::after {
+  content: "";
+  position: absolute; inset: 8px;
+  border-radius: 50%;
+  background: var(--bg);
+}
+h1 {
+  font-family: var(--serif);
+  font-size: 28px;
+  margin: 0;
+  letter-spacing: 0.02em;
+  font-weight: 700;
+}
+.tag { margin: 2px 0 0; color: var(--muted); font-size: 11px; max-width: 520px; }
+.stats {
+  display: flex; gap: 16px; margin: 0; flex-wrap: wrap; justify-content: flex-end;
+}
+.stats div { min-width: 52px; }
+.stats dt { color: var(--muted); font-size: 10px; letter-spacing: 0.08em; }
+.stats dd { margin: 0; font-size: 15px; color: var(--cycle); }
+
+.stage {
+  grid-area: stage;
+  position: relative;
+  min-height: 0;
+  background: radial-gradient(1200px 700px at 50% 40%, #1a1630 0%, var(--bg) 70%);
+}
+#atlas { width: 100%; height: 100%; display: block; cursor: crosshair; }
+#hover {
+  position: absolute;
+  pointer-events: none;
+  background: #0d0b16ee;
+  border: 1px solid #3b3450;
+  padding: 6px 8px;
+  font-size: 11px;
+  max-width: 280px;
+  color: var(--ink);
+}
+#hover b { color: var(--cycle); }
+
+.hud {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.toggles { display: flex; gap: 6px; }
+button {
+  font: 11px var(--mono);
+  background: #161226cc;
+  color: var(--ink);
+  border: 1px solid #3b3450;
+  padding: 6px 10px;
+  cursor: pointer;
+}
+button.active, button:hover { border-color: var(--cycle); color: var(--cycle); }
+.search {
+  display: flex; align-items: center; gap: 6px;
+  background: #161226cc; border: 1px solid #3b3450; padding: 4px 8px;
+  color: var(--muted);
+}
+.search input {
+  background: transparent; border: 0; color: var(--ink);
+  font: 12px var(--mono); width: 180px; outline: none;
+}
+
+.timebox {
+  position: absolute;
+  left: 14px; right: 14px; bottom: 16px;
+  background: #120f1ccc;
+  border: 1px solid var(--line);
+  padding: 8px 12px;
+}
+.time-lab { display: flex; gap: 12px; font-size: 11px; color: var(--muted); }
+.time-lab strong { color: var(--ink); }
+.time-lab em { color: var(--cycle); font-style: normal; }
+input[type="range"] { width: 100%; accent-color: var(--cycle); }
+
+.rail {
+  grid-area: rail;
+  border-left: 1px solid var(--line);
+  overflow: auto;
+  background: #0c0a14;
+}
+.panel { padding: 14px 16px 8px; border-bottom: 1px solid var(--line); }
+.panel h2 {
+  margin: 0 0 8px;
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  font-weight: 500;
+}
+.term {
+  margin: 0;
+  font: 11px/1.45 var(--mono);
+  color: var(--term);
+  white-space: pre-wrap;
+  min-height: 120px;
+}
+.bridge-meta { color: var(--muted); font-size: 11px; line-height: 1.4; }
+.cycle-list { list-style: none; margin: 0; padding: 0; }
+.cycle-list li {
+  padding: 8px 6px;
+  border-top: 1px solid #221c30;
+  cursor: pointer;
+  font-size: 11px;
+}
+.cycle-list li:hover, .cycle-list li.on { background: #1a1630; }
+.cycle-list .rk { color: var(--cycle); }
+.cycle-list small { color: var(--muted); display: block; }
+
+.spark { margin-top: 10px; }
+.spark .row { display: grid; grid-template-columns: 42px 1fr 48px; gap: 6px; align-items: center; font-size: 10px; margin: 4px 0; color: var(--muted); }
+.spark i { display: block; height: 6px; background: #2a2438; position: relative; }
+.spark i::after {
+  content: ""; position: absolute; inset: 0 auto 0 0; width: var(--w, 0%);
+  background: var(--cycle);
+}
+#bar-dr0::after, #bar-dr1::after { background: var(--danger); }
+#bar-cr0::after, #bar-cr1::after { background: var(--qbio); }
+.spark b { text-align: right; color: var(--ink); font-weight: 500; }
+#spark-peer { color: var(--muted); font-size: 10px; }
+
+.foot {
+  grid-area: foot;
+  display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap;
+  padding: 8px 18px 12px;
+  border-top: 1px solid var(--line);
+  color: var(--muted); font-size: 11px;
+}
+.foot a { color: var(--cycle); }
+.legend { display: flex; gap: 12px; flex-wrap: wrap; }
+.legend span { display: flex; align-items: center; gap: 6px; }
+.sw { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
+
+.sheet {
+  position: fixed; inset: 0; background: #07060fcc;
+  display: grid; place-items: center; z-index: 20;
+}
+.sheet-card {
+  background: #120f1c; border: 1px solid var(--cycle);
+  padding: 22px 26px; max-width: 420px;
+}
+.sheet-card h3 { font-family: var(--serif); margin: 0 0 10px; }
+.sheet-card ul { padding: 0; list-style: none; }
+.sheet-card li { margin: 6px 0; font-size: 13px; }
+kbd {
+  font: 11px var(--mono);
+  border: 1px solid #3b3450;
+  padding: 1px 6px;
+  color: var(--cycle);
+}
+
+@media (max-width: 980px) {
+  body {
+    grid-template-columns: 1fr;
+    grid-template-areas: "top" "stage" "rail" "foot";
+  }
+  .stage { min-height: 70vh; }
+  .rail { max-height: 50vh; }
+}
